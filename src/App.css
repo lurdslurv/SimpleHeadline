@@ -28,11 +28,22 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* .particles-bg canvas {
+  background: linear-gradient(31deg, rgba(205,168,1,1) 0%, rgba(254,214,32,1) 35%, rgba(224,255,0,1) 100%);
+} */
+
+.gradient-bg {
+  background: linear-gradient(135deg, #1e3a8a, #ff5722); /* Your gradient */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
+
+.particles-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Particles should be above the gradient */
+}
+

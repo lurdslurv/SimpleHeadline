@@ -3,6 +3,12 @@ import Header from './components/Header';
 import ContentCreation from './components/ContentCreation';
 import ParticleBackground from './components/ParticleBackground';
 
+// const ParticleBackground = () => {
+//   const init = useCallback(async (engine) => {
+//     await loadFull(engine)
+// })
+// }
+
 function App() {
   return (
     <div className="min-h-screen relative overflow-hidden">

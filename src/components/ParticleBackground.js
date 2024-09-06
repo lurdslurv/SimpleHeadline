@@ -1,83 +1,118 @@
-import React, { useCallback } from 'react';
-import Particles from 'react-tsparticles';
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { useEffect, useMemo, useState } from "react";
+// import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
+// import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
+import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
+// import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
 
-const ParticleBackground = () => {
-  const particlesInit = useCallback(async (engine) => {
-    // You can optionally load additional shapes or presets here
+
+
+const ParticlesComponent = (props) => {
+
+  const [init, setInit] = useState(false);
+  // this should be run only once per application lifetime
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
+      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+      // starting from v2 you can add only the features you need reducing the bundle size
+      //await loadAll(engine);
+      //await loadFull(engine);
+      await loadSlim(engine);
+      //await loadBasic(engine);
+    }).then(() => {
+      setInit(true);
+    });
   }, []);
 
-  const particlesLoaded = useCallback(async (container) => {
-    console.log(container); // Optional: can log to see the container
-  }, []);
+//   const particlesLoaded = (container) => {
+//     console.log(container);
+//   };
 
-  return (
-    <Particles
-      id="tsparticles"
-      init={particlesInit}
-      loaded={particlesLoaded}
-      options={{
-        background: {
-          color: {
-            value: "#fed620", // Set the background color
+
+const options = useMemo(
+    () => ({
+    background: {
+            "color": {
+                "value": {
+                    "r": 255,
+                    "g": 127,
+                    "b": 0
+                }
+        }
+    },
+      fpsLimit: 120,
+      interactivity: {
+        events: {
+          onClick: {
+            enable: true,
+            mode: "repulse",
+          },
+          onHover: {
+            enable: true,
+            mode: "grab",
           },
         },
-        fpsLimit: 120,
-        particles: {
-          number: {
-            value: 100,
-            density: {
-              enable: true,
-              value_area: 800,
-            },
+        modes: {
+          push: {
+            distance: 200,
+            duration: 15,
           },
-          color: {
-            value: "#1e3a8a",
-          },
-          shape: {
-            type: "circle",
-            stroke: {
-              width: 0,
-              color: "#000000",
-            },
-            polygon: {
-              nb_sides: 5,
-            },
-          },
-          opacity: {
-            value: 0.5,
-          },
-          size: {
-            value: { min: 1, max: 5 },
-            random: true,
-          },
-          links: {
-            enable: true,
+          grab: {
             distance: 150,
-            color: "#1e3a8a",
-            opacity: 0.5,
-            width: 1,
-          },
-          move: {
-            enable: true,
-            speed: 1,
-            direction: "none",
-            random: false,
-            straight: false,
-            outModes: {
-              default: "bounce",
-            },
           },
         },
-        detectRetina: true,
-      }}
-      style={{
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        zIndex: 1,
-      }}
-    />
+      },
+      particles: {
+        color: {
+          value: "#F2f2f2",
+        },
+        links: {
+          color: "#FFFFFF",
+          distance: 150,
+          enable: true,
+          opacity: 0.3,
+          width: 1,
+        },
+        move: {
+          direction: "none",
+          enable: true,
+          outModes: {
+            default: "bounce",
+          },
+          random: true,
+          speed: 1,
+          straight: false,
+        },
+        number: {
+          density: {
+            enable: true,
+          },
+          value: 150,
+        },
+        opacity: {
+          value: 1.0,
+        },
+        shape: {
+          type: "circle",
+        },
+        size: {
+          value: { min: 1, max: 3 },
+        },
+      },
+      detectRetina: true,
+    }),
+    []
   );
+
+
+  return ( 
+    <div className="gradient-bg">
+    {/* Particles with a custom CSS class */}
+        <Particles className="particles-bg" id={props.id} init={init} options={options} />
+    </div>
+
+    )
 };
 
-export default ParticleBackground;
+export default ParticlesComponent;
