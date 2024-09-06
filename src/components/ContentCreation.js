@@ -67,7 +67,7 @@ const ContentCreation = () => {
               type="text"
               value={businessName}
               onChange={(e) => setBusinessName(e.target.value)}
-              placeholder="e.g., Tech Solutions"
+              placeholder="e.g., Tell us a bit about your business and see the magic!"
               className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
