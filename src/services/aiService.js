@@ -1,5 +1,5 @@
 export const fetchAIContent = async (promptText) => {
-    const apiKey = "NPGVAUVujriv6NIqko2nCNslHqtowkkV";
+    const apiKey = process.env.apiKey;
   
     const response = await fetch("https://api.ai21.com/studio/v1/j2-mid/complete", {
       headers: {
