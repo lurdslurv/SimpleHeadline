@@ -10,7 +10,7 @@ export const fetchAIContent = async (promptText) => {
       body: JSON.stringify({
         prompt: promptText,
         numResults: 1,
-        maxTokens: 150, // adjust as necessary
+        maxTokens: 300, // adjust as necessary
         temperature: 0.7,
         topP: 1,
       }),
