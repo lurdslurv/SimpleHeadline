@@ -8,11 +8,11 @@ const ContentCreation = () => {
   const [audience, setAudience] = useState('');
   const [brandTone, setBrandTone] = useState('');
   const [contentType, setContentType] = useState('');
-  const [headline, setHeadline] = useState('');
+  // const [headline, setHeadline] = useState('');
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [iniHead, setIniHead] = useState('');
+  // const [iniHead, setIniHead] = useState('');
 
   const generateContent = async () => {
     setLoading(true);
@@ -149,10 +149,10 @@ const ContentCreation = () => {
   
           {/* Right: Generated Output */}
           <div className="w-full md:w-1/2 bg-gray-50 p-6 rounded-lg shadow-lg h-[99vh] overflow-y-auto custom-scrollbar scroll-smooth ">
-            {headline || content ? (
+            { content ? (
               <>
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">{iniHead}</h2>
-                <p className="text-xl text-gray-700 mb-6">{headline}</p>
+                {/* <h2 className="text-2xl font-bold text-gray-800 mb-4"></h2>
+                <p className="text-xl text-gray-700 mb-6"></p> */}
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">See the Results</h3>
                 <p className="text-lg text-gray-600">{content}</p>
               </>
