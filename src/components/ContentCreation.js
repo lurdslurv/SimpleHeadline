@@ -140,7 +140,7 @@ const ContentCreation = () => {
             <button
               onClick={generateContent}
               disabled={loading}
-              className="w-full bg-gradient-to-r from-yellow-500 to-indigo-500 text-black py-3 px-4 rounded-lg hover:shadow-lg transition duration-200 ease-in-out mb-6"
+              className="w-full bg-gradient-to-r from-yellow-500 to-grey-500 text-black py-3 px-4 rounded-lg hover:shadow-lg transition duration-200 ease-in-out mb-6"
             >
               {loading ? 'Generating...' : 'Generate Content'}
             </button>

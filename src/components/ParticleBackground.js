@@ -35,9 +35,10 @@ const options = useMemo(
     background: {
             "color": {
                 "value": {
-                    "r": 255,
-                    "g": 127,
-                    "b": 0
+                    "r": 211,
+                    "g": 211,
+                    "b": 211,
+                    "a": 0,
                 }
         }
     },
